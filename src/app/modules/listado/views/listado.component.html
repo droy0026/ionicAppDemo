@@ -1,0 +1,18 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-segment>
+      <ion-segment-button value="first">
+      <ion-label>Importantes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="second">
+      <ion-label>No Importantes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-shopping-cart [movies]="peliculas" (emitRomove)="deleteMovie($event)"></app-shopping-cart>
+</ion-content>
+
