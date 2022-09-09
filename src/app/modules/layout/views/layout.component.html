@@ -15,6 +15,10 @@
           <ion-icon name="document-text-outline" slot="start" color="success"></ion-icon>
           <ion-label>Pdf</ion-label>
         </ion-item>
+        <ion-item type="button" [routerLink]="['slides-prueba']" detail="true">
+          <ion-icon name="albums-outline" slot="start" color="error"></ion-icon>
+          <ion-label>Slides</ion-label>
+        </ion-item>
       </ion-list>
     </ion-menu-toggle>
   </ion-content>
@@ -29,10 +33,10 @@
       <ion-title slot="start">Menu</ion-title>
       <ion-title>Peliculas</ion-title>
       <ion-buttons slot="end">
-        <ion-button fill="clear" color="dark">
+        <ion-button [routerLink]="['shopping-cart']" fill="clear" color="dark">
           <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
-<!--           <ion-badge color="warning">{{n_articulos}}</ion-badge>
- -->        </ion-button>
+          <ion-badge color="warning">{{operationResult}}</ion-badge>
+        </ion-button>
         <ion-button [routerLink]="['home']" fill="clear" color="dark">
           <ion-icon slot="icon-only" name="home-outline"></ion-icon>
         </ion-button>

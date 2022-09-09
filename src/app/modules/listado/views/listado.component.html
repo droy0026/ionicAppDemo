@@ -1,18 +1,24 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-segment>
+    <ion-segment [(ngModel)]="segment">
       <ion-segment-button value="first">
-      <ion-label>Importantes</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="second">
-      <ion-label>No Importantes</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+        <ion-label>Importantes</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="second">
+        <ion-label>No Importantes</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <app-shopping-cart [movies]="peliculas" (emitRomove)="deleteMovie($event)"></app-shopping-cart>
+<ion-content [ngSwitch]="segment">
+  <button (click)="addToCart()"></button>
+  <ng-container *ngSwitchCase="'first'">
+    <app-importantes [articulos]="numArticulos" [numero]="initialArticles" (emitAdd)="receiveNumber($event)"></app-importantes>
+  </ng-container>
+  <ng-container *ngSwitchCase="'second'">
+    <app-no-importantes [articulos]="numArticulos" [numero]="initialArticles" (emitAdd)="receiveNumber($event)"></app-no-importantes>
+  </ng-container>
 </ion-content>
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ListadoService } from 'src/app/core/services/listado.service';
 
@@ -8,7 +8,7 @@ import { ListadoService } from 'src/app/core/services/listado.service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  @Input() articulos = new EventEmitter();
+  @Input() articulos: number[];
 
   operationResult = 0;
   subscription: Subscription;
@@ -21,7 +21,7 @@ export class LayoutComponent implements OnInit {
       .subscribe((data) => (this.operationResult = data));
   }
 
-  receiveArticle(num: number) {
-    this.articulos.emit(num);
+  receiveArticle(num: number[]) {
+    this.articulos= num;
   }
 }

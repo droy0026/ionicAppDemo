@@ -8,11 +8,12 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ImportantesComponent } from './components/importantes/importantes.component';
+import { NoImportantesComponent } from './components/no-importantes/no-importantes.component';
 
 
 @NgModule({
-  declarations: [ListadoComponent,ShoppingCartComponent],
+  declarations: [ListadoComponent,ImportantesComponent,NoImportantesComponent],
   imports: [
     ListadoRoutingModule,
     IonicModule,

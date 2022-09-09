@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/quotes */
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ListadoService } from 'src/app/core/services/listado.service';
-import { delay } from 'rxjs/internal/operators';
-import { Pelicula } from 'src/app/core/models/pelicula';
+
 
 @Component({
   selector: 'app-listado',
@@ -10,33 +9,31 @@ import { Pelicula } from 'src/app/core/models/pelicula';
   styleUrls: ['./listado.component.scss'],
 })
 export class ListadoComponent implements OnInit {
-  peliculas: Pelicula[] = [];
-  //@Output() movieToCart = new EventEmitter<Pelicula>();
+  numArticulos: number[];
+  initialArticles=0;
+  segment='first';
 
-  //segment="first";
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  @Output() emitArticle = new EventEmitter<number[]>();
+
 
   constructor(private moviesService: ListadoService) {}
 
-  ngOnInit(): void {
-    this.getData();
+  ngOnInit(): void {}
+
+  receiveNumber(num: number){
+    this.initialArticles=num;
+
   }
 
-  getData() {
-    this.moviesService
-      .fetchData()
-      .pipe(delay(1000))
-      .subscribe((data) => {
-        console.log(data);
-        this.peliculas = data;
-      });
+  addToCart(){
+    this.initialArticles++;
+    this.moviesService.updateResult(this.initialArticles);
+    this.emitArticle.emit(this.numArticulos);
+    console.log(this.numArticulos);
   }
 
- /*  addToCart(movie: Pelicula) {
-    this.movieToCart.emit(movie);
-    console.log(movie);
-  } */
-
-  deleteMovie(id: number) {
+  /* deleteMovie(id: number) {
     const foundPelicula = this.peliculas.find(
       (_peliculas) => id === _peliculas.id
     );
@@ -46,5 +43,5 @@ export class ListadoComponent implements OnInit {
     // this.video.splice(this.video.indexOf(this.video.find( _videogame=> id === _videogame.id)));
 
     this.peliculas = [...this.peliculas];
-  }
+  } */
 }
